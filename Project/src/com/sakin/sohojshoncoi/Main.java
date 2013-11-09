@@ -3,7 +3,12 @@ package com.sakin.sohojshoncoi;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.sakin.sohojshoncoi.database.Account;
+import com.sakin.sohojshoncoi.database.Category;
 import com.sakin.sohojshoncoi.database.DatabaseHelper;
+import com.sakin.sohojshoncoi.database.Media;
+import com.sakin.sohojshoncoi.database.MediaCategory;
+import com.sakin.sohojshoncoi.database.Reminder;
+import com.sakin.sohojshoncoi.database.Transaction;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -19,10 +24,10 @@ public class Main extends Activity {
 		
 		databaseHelper = getHelper();
 		// here we try inserting data in the on-create as a test
-		RuntimeExceptionDao<Account, Integer> dao = databaseHelper.getAccountDAO();
-		// create some entries in the onCreate
-		Account account = new Account("testing", 0.0, 0.0);
-		dao.create(account);
+//		RuntimeExceptionDao<Account, Integer> accountDAO = databaseHelper.getAccountDAO();
+//		Account account = new Account();
+//		accountDAO.create(account);
+		
 	}
 
 	@Override
