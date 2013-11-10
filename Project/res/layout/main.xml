@@ -9,8 +9,18 @@
     tools:context=".Main" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/dayliHisabB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="110dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Dayli Hisab" />
 
 </RelativeLayout>

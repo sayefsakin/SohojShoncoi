@@ -9,10 +9,15 @@ import com.sakin.sohojshoncoi.database.Media;
 import com.sakin.sohojshoncoi.database.MediaCategory;
 import com.sakin.sohojshoncoi.database.Reminder;
 import com.sakin.sohojshoncoi.database.Transaction;
+import com.sakin.sohojshoncoi.daylihisab.DayliHisabMain;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class Main extends Activity {
 
@@ -27,6 +32,15 @@ public class Main extends Activity {
 //		RuntimeExceptionDao<Account, Integer> accountDAO = databaseHelper.getAccountDAO();
 //		Account account = new Account();
 //		accountDAO.create(account);
+		
+		Button dayliHisabB = (Button)findViewById(R.id.dayliHisabB);
+		dayliHisabB.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View arg0) {
+				Intent loginIntent = new Intent(Main.this, DayliHisabMain.class);
+		        startActivity(loginIntent);
+			}
+		});
 		
 	}
 
