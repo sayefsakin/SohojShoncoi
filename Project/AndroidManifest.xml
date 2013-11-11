@@ -24,5 +24,9 @@
         </activity>
         <activity android:name=".daylihisab.DayliHisabMain" />
     </application>
-
+	<application 
+	    android:name=".SSDAO"
+	    android:icon="@drawable/ic_launcher" >
+	    
+	</application>
 </manifest>

@@ -8,6 +8,7 @@ import com.sakin.sohojshoncoi.database.DatabaseHelper;
 import com.sakin.sohojshoncoi.database.Media;
 import com.sakin.sohojshoncoi.database.MediaCategory;
 import com.sakin.sohojshoncoi.database.Reminder;
+import com.sakin.sohojshoncoi.database.SSDAO;
 import com.sakin.sohojshoncoi.database.Transaction;
 import com.sakin.sohojshoncoi.daylihisab.DayliHisabMain;
 
@@ -21,17 +22,16 @@ import android.widget.Button;
 
 public class Main extends Activity {
 
-	private DatabaseHelper databaseHelper = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		init();//app initializaiton code goes here
+
+		SSDAO ssdao = ((SSDAO)getApplicationContext());
 		
-		databaseHelper = getHelper();
-		// here we try inserting data in the on-create as a test
-//		RuntimeExceptionDao<Account, Integer> accountDAO = databaseHelper.getAccountDAO();
-//		Account account = new Account();
-//		accountDAO.create(account);
+		Account account = new Account("Sakin",0.0,0.0);
+		ssdao.getAccountDAO().create(account);
 		
 		Button dayliHisabB = (Button)findViewById(R.id.dayliHisabB);
 		dayliHisabB.setOnClickListener(new OnClickListener() {
@@ -50,20 +50,18 @@ public class Main extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	private void init(){
+		// all initialization code goes here
+		SSDAO ssdao = ((SSDAO)getApplicationContext());
+	    ssdao.init();
+	}
 
 	@Override
 	protected void onDestroy() {
 	    super.onDestroy();
-	    if (databaseHelper != null) {
-	        OpenHelperManager.releaseHelper();
-	        databaseHelper = null;
-	    }
+	    SSDAO ssdao = ((SSDAO)getApplicationContext());
+	    ssdao.close();
 	}
 
-	private DatabaseHelper getHelper() {
-	    if (databaseHelper == null) {
-	        databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
-	    }
-	    return databaseHelper;
-	}
 }
